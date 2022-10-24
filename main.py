@@ -1,5 +1,4 @@
 def Output(const, saveBonus, Base, aux):
-    print(Base)
     print("Các ràng buộc")
     for index, value in enumerate(const):
         print("{}x1".format(value[0][0]), end = " ")
@@ -9,10 +8,13 @@ def Output(const, saveBonus, Base, aux):
         print("{} {}".format(value[1][0], value[1][1]))
 
     print("Trong đó:")
-    print("X: " + ",".join([str(i) for i in saveBonus]) + " là biến giả")
-    print("X: " + ",".join([str(i) for i in aux if i not in saveBonus]) + " là biến phụ")
+    print("X: " + ",".join([str(i) for i in saveBonus]) + " là biến giả") if len(saveBonus) else ""
+    print("X: " + ",".join([str(i) for i in aux if i not in saveBonus]) + " là biến phụ") if len([i for i in aux if i not in saveBonus]) else ""
 
-    print("X: 1 -> {} >= 0".format(max( max(saveBonus) , max( max(Base), max(aux) ) )))
+    print("X: 1 -> {} >= 0".format(max( max(saveBonus+[0]) , max( max(Base+[0]), max(aux+[0]) ) )))
+
+    print("Cơ sở: ", Base)
+
 
 def Input(filename):
     data = open(filename, "r").read().splitlines()
@@ -87,6 +89,6 @@ def Input(filename):
     Output(const, saveBonus, base, aux + base)
 
     
+    return base, const
 
-
-Input("data.txt")
+base, const = Input("data.txt")
