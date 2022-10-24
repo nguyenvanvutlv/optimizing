@@ -1,4 +1,14 @@
-def Output(const, saveBonus, Base, aux):
+def Output(fx, const, saveBonus, Base, aux):
+    print("Bài toán ở dạng chuẩn\nF(X): " + str(fx[0])+"x1",end = " ")
+    for i,j in enumerate(fx[1:-1]):
+        sign = "-" if j < 0 else "+"
+        print("{} {}x{}".format(sign, abs(j),i+2),end = " ")
+    for i,j in enumerate(sorted([x for x in aux if x not in saveBonus])):
+        print("+ 0x{}".format(abs(j)),end = " ")        
+    for i,j in enumerate(sorted(saveBonus)):
+        print("- Mx{}".format(abs(j)),end = " ")   
+    print(" --> ", fx[-1])
+
     print("Các ràng buộc")
     for index, value in enumerate(const):
         print("{}x1".format(value[0][0]), end = " ")

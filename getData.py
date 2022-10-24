@@ -63,4 +63,4 @@ def Input(filename):
             bonus = bonus[1:] if len(bonus) > 0 else []
             saveBonus.append(saveBonus[-1] + 1 if len(saveBonus) else len(const[0][0]))
  
-    return base, const, saveBonus, aux
+    return fx, base, const, saveBonus, aux
